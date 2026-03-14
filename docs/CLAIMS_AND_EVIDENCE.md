@@ -3,19 +3,19 @@
 ## Design Claims
 
 ### "OUT OF SCOPE boundaries prevent domain bleeding"
-- **Evidence:** Research Swarm overlap reduction (76% → 38%) after adding scope boundaries (different pipeline)
-- **Strength:** Moderate (for Research Swarm), Weak (for this system — not independently tested)
-- **Caveats:** Research Swarm uses different agents for a different task. Transfer to extension development is a reasonable bet, not a proven result.
+- **Evidence:** Research Swarm overlap reduction (76% → 38%) after adding scope boundaries (different pipeline). Additionally, council-review experiment on Anti-Brainrot (2026-03-14) measured 6/7 specialists fully compliant with scope boundaries, 1/7 partial overstep. Specialist overlap dropped from 55% (old 22-agent, no boundaries) to 37.2% (new 15-agent, with boundaries).
+- **Strength:** Moderate — now validated in this system with one live test
+- **Caveats:** Single extension test (Anti-Brainrot). The remaining 37.2% overlap is largely cross-domain findings that legitimately appear in multiple specialist domains. n=1 for this system.
 
 ### "Position-locked cross-feed preserves more information than forced consensus"
-- **Evidence:** Research Swarm brief on parallel vs sequential pipelines (run 39)
-- **Strength:** Weak — the brief describes the problem theoretically. No measurement of information loss in either v1.0 or v2.0 of this system.
-- **Caveats:** v1.0 was never evaluated before being replaced, so no before/after comparison exists.
+- **Evidence:** Research Swarm brief on parallel vs sequential pipelines (run 39). Additionally, council-review experiment (2026-03-14) surfaced 4 explicit conflicts between leads using position-locked format. Old 22-agent config with forced consensus surfaced 0 conflicts on the same extension. The 4 conflicts revealed a legitimate scope disagreement (Karpathy GO vs Hamilton/Linus NO-GO) that would have been averaged into a false CONDITIONAL under the old protocol.
+- **Strength:** Moderate — one live test demonstrates the mechanism works as designed
+- **Caveats:** v1.0 was never evaluated before being replaced, so the comparison is against stored baseline data, not a parallel A/B run. n=1.
 
 ### "7 agents were merged with zero coverage loss"
-- **Evidence:** Qualitative assessment during restructure. No coverage measurement.
-- **Strength:** Weak — "zero coverage loss" is a claim, not a measured result.
-- **Caveats:** Coverage was assessed by reviewing agent scope definitions, not by running comparative builds.
+- **Evidence:** Qualitative assessment during restructure confirmed by systematic coverage gap analysis (2026-03-14). Every domain from 7 removed agents was mapped to a surviving agent with specific evidence from AGENT-SWARM.md line references. In one case (external CDN detection), coverage improved from 1 agent to 3. Council-review experiment found 27 unique findings vs 18 in old audit — +50% more findings with 42% fewer specialists.
+- **Strength:** Moderate — structural analysis complete, one live test confirms coverage maintained
+- **Caveats:** Coverage gap analysis is structural (checking definitions), not empirical (running both configs on identical inputs). The +50% finding increase may partially reflect extension changes since the old audit.
 
 ### "Integrative compromise causes up to 37.6% quality loss"
 - **Evidence:** Research Swarm brief citing multi-agent literature (not own measurement)

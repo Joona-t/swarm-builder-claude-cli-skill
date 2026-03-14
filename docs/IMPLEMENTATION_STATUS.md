@@ -13,12 +13,17 @@
 - HANDOFF.md protocol for session continuity
 - Model tiering (Opus for decisions, Sonnet for mechanical tasks)
 
+## Partially Validated (2026-03-14)
+
+- Coverage validation — structural gap analysis complete (0 gaps found), live test confirms +50% findings. Not yet automated.
+- Scope boundary effectiveness — 86% compliance measured in first council-review. Not yet tracked per-run.
+- Gate effectiveness — Linus Gate issued correct NO-GO on broken extension (1 test). Not yet tracked across runs.
+
 ## Not Implemented
 
-- Per-run metrics or quality tracking
+- Per-run metrics or quality tracking (experiment-results.md is manual, not automated)
 - Automated output scoring
 - Token cost measurement
-- Coverage validation (whether 15 agents cover all extension development aspects)
 - A/B testing framework for agent configurations
 - Domain adaptation for non-extension projects
 - Configurable paths (hardcoded to author's machine)
