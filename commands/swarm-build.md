@@ -1,4 +1,4 @@
-You are the full LoveSpark Agent Swarm (22 agents). Follow AGENT-SWARM.md exactly.
+You are the full LoveSpark Agent Swarm (15 agents). Follow AGENT-SWARM.md exactly.
 
 Build a new extension or feature using the swarm in design-and-implement mode.
 
@@ -22,39 +22,33 @@ Deploy memory-agent FIRST. Read:
 
 ---
 
-## Wave 1 — Research (Parallel Specialists)
+## Wave 1 — Recon (Parallel Specialists)
 
-All 12 specialists gather context simultaneously. They do NOT build anything.
+All 7 specialists gather context simultaneously. They do NOT build anything.
+Each specialist stays within their OUT OF SCOPE boundaries (see AGENT-SWARM.md).
 
 | Specialist | Build Mode Task |
 |---|---|
-| perf-profiler | Profile similar extensions for perf baselines |
-| bundle-analyzer | Inventory reusable assets from shared lib; set weight budget |
-| error-scanner | Survey error patterns in similar extensions |
+| perf-analyzer | Profile similar extensions for perf baselines; inventory reusable assets from shared lib; set weight budget; find reusable code |
+| security-scanner | Survey error patterns and security vulnerabilities in similar extensions |
 | privacy-guardian | Map all data flows the new build touches; flag risks |
-| dead-code-hunter | Find reusable code in existing extensions |
-| manifest-validator | Generate manifest template from required permissions |
+| manifest-auditor | Generate manifest template from required permissions; confirm shared lib versions; verify zero external deps |
 | brand-auditor | Produce brand checklist: Sparky, `--ls-bg-gradient`, themes, messages |
 | asset-validator | List all assets needed; check what already exists |
-| pattern-miner | Find closest reference extension; extract reusable patterns |
-| docs-generator | Draft README + store listing stub in LoveSpark voice |
-| security-scanner | Produce security requirements: CSP, permission justification |
-| dependency-auditor | Confirm shared lib versions; verify zero external deps |
+| pattern-miner | Find closest reference extension; extract reusable patterns; check naming conflicts + duplicate functionality in ecosystem |
 
-Utility agents deploy alongside:
-- `memory-agent`: Loads known-issues, color-decisions, debugging context
-- `cross-sync`: Checks naming conflicts + duplicate functionality in ecosystem
+Memory-agent deploys alongside to load known-issues, color-decisions, debugging context.
 
-**`feature` mode extra:** pattern-miner, error-scanner, and brand-auditor additionally analyze the target extension's existing codebase.
+**`feature` mode extra:** pattern-miner, security-scanner, and brand-auditor additionally analyze the target extension's existing codebase.
 
 **Output:** `research.md` + individual reports in `_reports/BUILD-RECON-[name]-[date].md`
 
 ---
 
-## Wave 2 — Iterative Design (Council Leads, Multi-Round)
+## Wave 2 — Iterative Design (Council Leads, Position-Locked)
 
-### Round 1 — Initial Design (Parallel)
-Each lead reads Wave 1 reports + their context modules:
+### Round 1 — Independent Analysis (Parallel)
+Each lead reads Wave 1 reports + their context modules. Each lead produces their FULL analysis independently.
 
 | Lead | Produces | Reads |
 |---|---|---|
@@ -65,18 +59,23 @@ Each lead reads Wave 1 reports + their context modules:
 | Karpathy | Core algorithm, heuristics, detection/blocking strategies | — |
 | Linus | Security requirements, CSP policy, permission audit | `known-issues.md` |
 
-### Round 2 — Cross-Feed (Parallel)
-Each lead reads ALL other leads' Round 1 output. They:
-- Identify conflicts (e.g., Carmack's perf constraint vs Rauch's animation plan)
-- Resolve dependencies (e.g., Karpathy's algorithm needs Hamilton's error boundaries)
-- Refine their section based on the full picture
+Each lead MUST respect their OUT OF SCOPE boundaries (see AGENT-SWARM.md).
 
-### Round 3 — Alignment (if conflicts remain)
-Only leads with unresolved conflicts iterate one more time. Others hold.
+### Round 2 — Conflict Detection (Parallel)
+Each lead reads peer **conclusions only** (not full output). They:
+- Flag CONFLICTS but do NOT change their own conclusions
+- Output format per lead:
+  - **My recommendation:** [unchanged from Round 1]
+  - **My confidence:** [0.0-1.0]
+  - **Conflicts with:** [list of leads and specific disagreements]
+  - **Trade-off note:** [why this conflict exists]
 
-**Assembly:** Combine all lead sections into `plan.md` with a granular TODO checklist. Each section attributed to its lead.
+**No Round 3.** Disagreements are preserved for Joona to resolve during annotation.
 
-**Output:** `plan.md` with architecture, reliability, code structure, UI/UX, logic, and security sections.
+### Assembly
+Combine all lead sections into `plan.md` with a granular TODO checklist. Each section attributed to its lead. Include a **Conflicts** section listing all disagreements with both sides' reasoning.
+
+**Output:** `plan.md` with architecture, reliability, code structure, UI/UX, logic, security, and conflicts sections.
 
 ---
 
@@ -111,12 +110,13 @@ Non-overlapping file scopes to avoid conflicts:
 
 | Agent Group | File Scope |
 |---|---|
-| Carmack + perf-profiler | `background.js`, `content.js` — core logic |
+| Carmack + perf-analyzer | `background.js`, `content.js` — core logic |
 | Rauch + brand-auditor + asset-validator | `popup.html`, `popup.css`, `popup.js`, icons, mascot |
-| Hamilton + error-scanner | Error handling wrappers, storage migration |
-| Matz + manifest-validator | `manifest.json`, file structure, naming |
+| Hamilton + security-scanner | Error handling wrappers, storage migration |
+| Matz + manifest-auditor | `manifest.json`, file structure, naming |
 | Karpathy + pattern-miner | Core algorithm files, feature logic |
-| docs-generator + changelog-writer | README.md, CHANGELOG.md, store listing |
+
+Documentation (README.md, CHANGELOG.md, store listing) is generated by the orchestrator after build is complete.
 
 **`new` mode:** Run `scaffold-extension.py --name [name] --category [category] --features stats,theme,toggle` first, then customize.
 
@@ -134,8 +134,8 @@ Non-overlapping file scopes to avoid conflicts:
 ---
 
 ## Rules
-- Always reference AGENT-SWARM.md for agent roles and colors.
-- Every specialist and lead must think in their exact domain.
+- Always reference AGENT-SWARM.md for agent roles, scope boundaries, and colors.
+- Every specialist and lead must think ONLY in their exact domain — respect OUT OF SCOPE.
 - Stay 100% aligned with "The One Rule": empower users, never exploit.
 - `known-issues.md` entries are hard constraints — not suggestions.
 - Report naming: `BUILD-RECON-[name]-[date].md`, `LINUS-GATE-[name]-[date].md`, `BUILD-REPORT-[name]-[date].md`

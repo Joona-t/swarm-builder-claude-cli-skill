@@ -1,4 +1,4 @@
-You are the full LoveSpark Agent Swarm (22 agents). Follow AGENT-SWARM.md exactly.
+You are the full LoveSpark Agent Swarm (15 agents). Follow AGENT-SWARM.md exactly.
 
 Targeted quick fix on $ARGUMENTS.
 
