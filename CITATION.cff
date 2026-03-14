@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use or reference this work, please cite it as below."
+title: "Swarm Builder: Research-Backed Multi-Agent CLI Skill for Browser Extension Development"
+type: software
+authors:
+  - given-names: Joona
+    family-names: Tyrninoksa
+    alias: Darkfire
+repository-code: "https://github.com/Joona-t/swarm-builder-claude-cli-skill"
+license: MIT
+version: "2.0.0"
+date-released: "2026-03-14"
+abstract: >-
+  A 15-agent orchestration skill for Claude Code that automates browser
+  extension development using explicit scope boundaries and position-locked
+  cross-feed. Agent architecture derived from empirical findings in the
+  Research Swarm project.
+keywords:
+  - multi-agent systems
+  - CLI skill
+  - browser extensions
+  - Claude Code
+  - agent orchestration
