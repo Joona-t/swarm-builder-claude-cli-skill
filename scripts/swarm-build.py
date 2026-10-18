@@ -19,7 +19,7 @@ import subprocess
 import sys
 from datetime import date
 
-BASE = "/Users/darkfire/Claude x LoveSpark"
+BASE = os.environ.get("LOVESPARK_ROOT", os.path.expanduser("~/Claude x LoveSpark"))
 SCRIPTS = f"{BASE}/scripts"
 CATEGORIES = ["privacy", "neurodivergent", "reading", "themes", "productivity", "games", "full-power"]
 

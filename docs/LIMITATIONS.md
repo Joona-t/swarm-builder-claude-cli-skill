@@ -12,7 +12,7 @@
 
 4. **Claude Code dependency.** Only works within Claude Code. Not portable to other AI coding tools.
 
-5. **Hardcoded paths.** `scripts/swarm-build.py` contains paths like `/Users/darkfire/Claude x LoveSpark`. Other users would need to modify the script.
+5. **Hardcoded paths.** `scripts/swarm-build.py` contains paths like `~/Claude x LoveSpark`. Other users would need to modify the script.
 
 6. **Domain-specific prompts.** All agent prompts are written for Manifest V3 browser extensions (LoveSpark ecosystem). Adapting to web apps, mobile apps, or backend services would require substantial prompt rewriting.
 
