@@ -139,7 +139,7 @@ cp AGENT-SWARM.md ~/your-project/
 
 1. **No independent evaluation data.** This repo contains no metrics, run logs, or experiment results. All empirical claims reference the Research Swarm project, which has its own limitations (40 runs, single LLM evaluator, small sample sizes).
 2. **Claude Code dependency.** The system only works within Claude Code. It cannot be used with other AI coding tools.
-3. **Hardcoded paths.** The Python orchestrator script contains hardcoded paths (`/Users/darkfire/Claude x LoveSpark`). Other users would need to modify these.
+3. **Hardcoded paths.** The Python orchestrator script contains hardcoded paths (`~/Claude x LoveSpark`). Other users would need to modify these.
 4. **No automated evaluation.** There is no quality gate or scoring mechanism. Output quality depends entirely on the agents and human review.
 5. **Token cost.** A full `/swarm-build new` run uses ~100-140k tokens. This is not free.
 6. **Browser extension specific.** The agent prompts, scope definitions, and evaluation criteria are designed for Manifest V3 browser extensions. Adapting to other domains would require significant prompt rewriting.
